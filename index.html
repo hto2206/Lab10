@@ -20,8 +20,7 @@
     <img src="./styles/settings.svg" alt="settings" width=40 height=40>
   </header>
 
-  <main class="double-column"></main>
-
+  <main id="main" class="double-column" ></main>
   <entry-page></entry-page>
 
   <!-- journal-entry web component -->
@@ -50,11 +49,12 @@
      });
      var client = factory.client();
      client.on(client.Event.SDK_READY, function() {
-       var treatment = client.getTreatment('double_column');
+       var treatment = 'on';
+       //client.getTreatment('double_column');
        if (treatment === 'on') {
-           body.classList.add('double-column');
+          document.getElementById("main").classList.add('double-column');
        } else if (treatment === 'off') {
-           // Single column layout, do nothing
+          document.getElementById("main").classList.remove('double-column');
        } 
      });
      client.destroy().then(function() {
