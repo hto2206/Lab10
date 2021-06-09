@@ -40,11 +40,16 @@
   <script src="https://cdn.split.io/sdk/split-10.15.7.js"></script>
   <!-- Our custom script. -->
   <script type="text/javascript">
-    (function() {
+     function clientid(length) {
+        var random = 'CLIENT_ID';
+        random = random + Math.random() + Math.random();
+        return random;
+      }
+
      var factory = splitio({
        core: {
          authorizationKey: 'hd26p1fjlsi27hc8b1rjmm3ju8b1mon8cr8j',
-         key: 'CUSTOMER_ID_' + Math.random()
+         key: clientid(5)
        }
      });
      var client = factory.client();
@@ -55,7 +60,9 @@
           document.getElementById("main").classList.add('double-column');
        } else if (treatment === 'off') {
           document.getElementById("main").classList.remove('double-column');
-       } 
+       } else {
+        document.getElementById("main").classList.remove('double-column');
+       }
      });
      client.destroy().then(function() {
          // Your data is successfully flushed.
